@@ -22,8 +22,8 @@ git clone ${HUGO_THEME_GIT_URI} /gravitee-bot/src/themes/vec
 rm -fr /gravitee-bot/src/themes/vec/.git/
 
 
-mkdir -p /gravitee-bot/src/layout
-cp -fR /gravitee-bot/src/themes/vec/layout/* /gravitee-bot/src/layout/
+mkdir -p /gravitee-bot/src/layouts
+cp -fR /gravitee-bot/src/themes/vec/layouts/* /gravitee-bot/src/layouts/
 
 mkdir -p /gravitee-bot/src/static
 cp -fR /gravitee-bot/src/themes/vec/static/* /gravitee-bot/src/static/
