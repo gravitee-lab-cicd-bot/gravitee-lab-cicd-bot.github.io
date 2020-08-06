@@ -42,5 +42,6 @@ services:
       # - graviteebot-data:/gravitee-bot/.data
     environment:
       - HUGO_BASE_URL=https://gravitee-lab-cicd-bot.github.io/
+      - HUGO_PROJECT_NAME=gravitee-cicd-bot
     networks:
       - hugo_ide
