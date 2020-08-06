@@ -21,7 +21,7 @@ Usage () {
   echo "                  when using this option, the following env var. are mandatory :"
   echo ""
   echo "                  COMMIT_MESSAGE :  will define the commit message to git flow feature finish the current feature"
-  echo "                  FEATURE_ALIAS :  will execute the [git flow feature finish ${FEATURE_ALIAS}] command, so must match current branch name, or throws an Error code 17"
+  # echo "                  FEATURE_ALIAS :  will execute the [git flow feature finish ${FEATURE_ALIAS}] command, so must match current branch name, or throws an Error code 17"
 
 }
 hugoPackage () {
@@ -38,9 +38,11 @@ checkFeatureBranch () {
   export CURRENT_BRANCH=$(git branch -a|grep '*'|awk '{print $2}') && echo "CURRENT_BRANCH=[${CURRENT_BRANCH}]"
   export EXPECTED_FEATURE_BRANCH="feature/${FEATURE_ALIAS}"
   if ! [ "x${CURRENT_BRANCH}" == "x${EXPECTED_FEATURE_BRANCH}" ]; then
-    echo "FEATURE_ALIAS env. var is set to [${FEATURE_ALIAS}] but current branch name is [${CURRENT_BRANCH}]"
-    Usage
-    exit 17
+    if ! [ "x${CURRENT_BRANCH}" == "xdevelop" ]; then
+      echo "FEATURE_ALIAS env. var is set to [${FEATURE_ALIAS}] but current branch name is [${CURRENT_BRANCH}]"
+      Usage
+      exit 17
+    fi;
   fi;
 }
 
@@ -76,21 +78,19 @@ commitAndPush () {
   git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
   if [ "x${FEATURE_ALIAS}" == "x" ]; then
-    echo "Your FEATURE_ALIAS is empty or not set"
+    echo "Warning : Your FEATURE_ALIAS is empty or not set"
     echo "set the FEATURE_ALIAS env. var. to finish your git flow feature"
     echo ""
-    Usage
-    exit 8
   fi;
 
   echo "Now to finish your git flow feature you can run : "
   echo "  git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all "
 }
 
-# And now you could do a release
+# And now you could push to Branch
 if [ "x$1" == "x" ]; then
   echo "You did not provide the [--git-flow] option as first argument, commit message is empty or not set"
-  echo "set the COMMIT_MESSAGE env. var. to finish your git flow feature"
+  echo "set the COMMIT_MESSAGE env. var. to commit and push to your branch and finish your git flow feature"
 else
   if ! [ "x$1" == "x--git-flow" ]; then
     read -p  "DEBUGPOINT JBL ko" DEBUGPOINT

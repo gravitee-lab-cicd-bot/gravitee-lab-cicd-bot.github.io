@@ -32,7 +32,6 @@ if [ "x${FEATURE_ALIAS}" == "x" ]; then
   echo "Your FEATURE_ALIAS is empty or not set"
   echo "set the FEATURE_ALIAS env. var. to finish your git flow feature"
   echo ""
-  exit 8
 fi;
 
 git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all
