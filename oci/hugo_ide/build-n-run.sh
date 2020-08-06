@@ -15,4 +15,4 @@ hugo
 echo "[- ./hugo/:/gravitee-bot/src/] volume folder content after hugo build : "
 ls -allh /gravitee-bot/src
 echo "Gravitee Bot Doc HUGO SERVER boot"
-cd /gravitee-bot/src && hugo server
+cd /gravitee-bot/src && hugo server --watch
