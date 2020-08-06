@@ -101,5 +101,6 @@ else
     # read -p  "DEBUGPOINT JBL ok" DEBUGPOINT
     checkFeatureBranch
     commitAndPush
+    docker-compose down --rmi all
   fi;
 fi;
