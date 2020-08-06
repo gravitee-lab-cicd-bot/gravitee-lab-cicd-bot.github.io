@@ -59,7 +59,7 @@ if [ "x${FEATURE_ALIAS}" == "x" ]; then
   echo ""
 fi;
 
-git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all
+git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all && git push -u origin --tags
 
 git flow release start ${NEXT_RELEASE}
 git flow release finish -s ${NEXT_RELEASE}
