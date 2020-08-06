@@ -50,7 +50,7 @@ git push -u origin --all
 git flow feature start  ${FEATURE_ALIAS}
 git push -u origin --all
 
-export FEATURE_ALIAS='hugo_ide'
+export FEATURE_ALIAS='hugo_bootstrap'
 export COMMIT_MESSAGE="feat(${FEATURE_ALIAS}): adding docker compose based hugo ide as required by #1"
 
 atom .
@@ -59,7 +59,7 @@ atom .
 
 
 * [ ] add quick hugo ide :
-  * `export FEATURE_ALIAS='hugo_ide' && git flow feature start  ${FEATURE_ALIAS}`
+  * `export FEATURE_ALIAS='hugo_bootstrap' && git flow feature start  ${FEATURE_ALIAS}`
   * in `./docker-compose.yml` :
 
 ```bash
@@ -82,7 +82,7 @@ atom .
 version: '3.5'
 
 networks:
-  hugo_ide:
+  hugo_bootstrap:
     name: hugonet
     driver: bridge
 
@@ -91,10 +91,10 @@ volumes:
 
 services:
 
-  hugo_ide:
+  hugo_bootstrap:
     image: quay.io/gravitee-lab/hugo-ide:0.74.3
     build:
-      context: oci/hugo-ide
+      context: oci/hugo_bootstrap
       args:
         - HUGO_VERSION=latest
     command: server
@@ -107,7 +107,7 @@ services:
     environment:
       - HUGO_BASE_URL=https://gravitee-lab-cicd-bot.github.io/
     networks:
-      - hugo_ide
+      - hugo_bootstrap
 ```
   * in `oci/hugo-ide/Dockerfile` :
 
@@ -124,10 +124,27 @@ RUN mkdir -p /gravitee-bot/.secrets
 VOLUME /gravitee-bot/.secrets
 
 ```
-  * `export FEATURE_ALIAS='hugo_ide' && git flow feature finish  ${FEATURE_ALIAS} && git push -u origin --all`
+  * `export FEATURE_ALIAS='hugo_bootstrap' && git flow feature finish  ${FEATURE_ALIAS} && git push -u origin --all`
 * [ ] add quick hugo theme :
   * `export FEATURE_ALIAS='hugo_theme' && git flow feature start  ${FEATURE_ALIAS}`
-  * init hugo project with theme https://github.com/IvanChou/hugo-theme-vec ,
+  * bootstrap hugo project with theme https://github.com/IvanChou/hugo-theme-vec , out of executing :
+
+```bash
+# git flow init
+# Bootstrap project :
+./bootstrap.sh
+# Develop cycle :
+docker-compose up -d --build --force-recreate hugo_ide && docker-compose logs -f hugo_ide
+
+cp -fr src/public/* ./docs
+sed -i "s#baseURL =.*#baseURL = \"${HUGO_BASE_URL}\"#g" ./docs/config.toml
+sed -i "s#baseurl =.*#baseURL = \"${HUGO_BASE_URL}\"#g" ./docs/config.toml
+
+# Congrats! Now the fresh hugo project source code is generated under the [src/] folder, and your site runing at
+
+# And now you could do a release
+```
+
   * `export FEATURE_ALIAS='hugo_theme' && git flow feature finish  ${FEATURE_ALIAS} && git push -u origin --all`
 * [ ] do the release :
   * `git flow release start 0.0.1`
