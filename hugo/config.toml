@@ -1,5 +1,5 @@
 baseURL = "https://gravitee-lab-cicd-bot.github.io"
-title = "yii.im"
+title = "/~/GraviteeLab-CICD-Bot"
 theme = "vec"
 languageCode = "en-us"
 paginate = 10
@@ -23,9 +23,9 @@ googleAnalytics = ""
 
 [params]
   Keywords = "key, 关键字, キーワード"
-  Description = "There are some words to describe your site"
+  Description = "Everything you ever wanted to know about me, the [Gravitee Lab CI CD Bot] !"
   Avatar = "img/avatar.jpg"
-  SelfIntro = "Just a worm, seek for true, live in shadow, no more..."
+  SelfIntro = "Hi, I am the Gravitee Lab CI CD Bot, I am Gravitee's best employee, I do all the boring and tedious tasks for the Team. Here you will find anythign you ever wanted to know about me !"
   Email = "yiichou@gmail.com"
 
   GithubID = "Your Github ID"
