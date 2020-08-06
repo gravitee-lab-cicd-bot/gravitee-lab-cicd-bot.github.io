@@ -19,7 +19,7 @@ RUN chmod +x /gravitee-bot/build-n-run.sh
 RUN apk update && apk add curl bash git
 
 VOLUME /gravitee-bot/.secrets
-VOLUME /gravitee-bot/src
+# VOLUME /gravitee-bot/src
 
 
 WORKDIR /gravitee-bot/work

@@ -67,6 +67,8 @@ commitAndPush () {
   export THATSME=$(whoami)
   sudo chown -R ${THATSME}:${THATSME} ./hugo
   sudo chmod -R a+rw ./hugo
+  sudo chown -R ${THATSME}:${THATSME} ./docs
+  sudo chmod -R a+rw ./docs
 
   if [ "x${COMMIT_MESSAGE}" == "x" ]; then
     echo "Your commit message is empty or not set"
