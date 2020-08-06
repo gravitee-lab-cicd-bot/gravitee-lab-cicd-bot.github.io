@@ -35,7 +35,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "1313:1313"
+      - "1312:1313"
     volumes:
       - $PWD/hugo:/gravitee-bot/src:rw
       - $PWD/.gravitee-bot/.secrets:/gravitee-bot/.secrets
