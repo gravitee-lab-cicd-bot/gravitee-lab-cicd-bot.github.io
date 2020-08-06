@@ -13,16 +13,36 @@ cp -fR /gravitee-bot/work/${HUGO_PROJECT_NAME}/* /gravitee-bot/src/
 echo "[- ./hugo/:/gravitee-bot/src/] volume folder content after bootstrap : "
 ls -allh /gravitee-bot/src/
 
+# --
+# Installing HUGO THEME
 
-# adding HUGO THEME
 rm -fr /gravitee-bot/src/themes/vec
 git clone ${HUGO_THEME_GIT_URI} /gravitee-bot/src/themes/vec
 
 rm -fr /gravitee-bot/src/themes/vec/.git/
 
+
+mkdir -p /gravitee-bot/src/layout
+cp -fR /gravitee-bot/src/themes/vec/layout/* /gravitee-bot/src/layout/
+
+mkdir -p /gravitee-bot/src/static
+cp -fR /gravitee-bot/src/themes/vec/static/* /gravitee-bot/src/static/
+
+mkdir -p /gravitee-bot/src/archetypes
+cp -fR /gravitee-bot/src/themes/vec/archetypes/* /gravitee-bot/src/archetypes/
+
+mkdir -p /gravitee-bot/src/images
+cp -fR /gravitee-bot/src/themes/vec/images/* /gravitee-bot/src/images/
+
+mkdir -p /gravitee-bot/src/src
+cp -fR /gravitee-bot/src/themes/vec/src/* /gravitee-bot/src/src/
+
+
 cp -fR /gravitee-bot/src/themes/vec/exampleSite/* /gravitee-bot/src/
 
-# setting up theme dependency in Hugo config file [config.toml]
+
+# --
+# Tying up theme to hugo project, in Hugo project config file [config.toml]
 
 sed -i "s#theme =.*#theme = \"vec\"#g" /gravitee-bot/src/config.toml
 
