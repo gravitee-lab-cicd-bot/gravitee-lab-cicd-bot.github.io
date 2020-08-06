@@ -28,7 +28,7 @@ services:
   hugo_ide:
     image: quay.io/gravitee-lab/hugo-ide:0.74.3
     build:
-      context: oci/hugo-ide
+      context: oci/hugo_ide
       args:
         - HUGO_VERSION=latest
     command: server
