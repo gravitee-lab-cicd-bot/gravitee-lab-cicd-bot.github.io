@@ -25,6 +25,29 @@ volumes:
 
 services:
 
+  hugo_bootstrap:
+    image: quay.io/gravitee-lab/hugo-boot:0.74.3
+    build:
+      context: oci/hugo_bootstrap
+      args:
+        - HUGO_VERSION=latest
+    command: server
+    stdin_open: true
+    tty: true
+    ports:
+      - "1313:1313"
+    volumes:
+      - $PWD/hugo:/gravitee-bot/src:rw
+      - $PWD/.gravitee-bot/.secrets:/gravitee-bot/.secrets
+      # - graviteebot-data:/gravitee-bot/.data
+    environment:
+      - HUGO_BASE_URL=https://gravitee-lab-cicd-bot.github.io
+      - HUGO_PROJECT_NAME=gravitee-cicd-bot
+      # must be HTTPS and public free access
+      - HUGO_THEME_GIT_URI=https://github.com/IvanChou/hugo-theme-vec.git
+    networks:
+      - hugo_ide
+
   hugo_ide:
     image: quay.io/gravitee-lab/hugo-ide:0.74.3
     build:
@@ -37,11 +60,10 @@ services:
     ports:
       - "1313:1313"
     volumes:
-      - ".:/src"
-      - ./.gravitee-bot/.secrets:/gravitee-bot/.secrets
+      - $PWD/hugo:/gravitee-bot/src:rw
+      - $PWD/.gravitee-bot/.secrets:/gravitee-bot/.secrets
       # - graviteebot-data:/gravitee-bot/.data
     environment:
-      - HUGO_BASE_URL=https://gravitee-lab-cicd-bot.github.io/
-      - HUGO_PROJECT_NAME=gravitee-cicd-bot
+      - HUGO_BASE_URL=https://gravitee-lab-cicd-bot.github.io
     networks:
       - hugo_ide
