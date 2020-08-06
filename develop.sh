@@ -24,7 +24,15 @@ Usage () {
 
 }
 
-
+hugoPackage () {
+  if [ -d ./docs ]; then
+    rm -fr ./docs
+  fi;
+  mkdir -p ./docs
+  cp -fr $(pwd)/hugo/public/* ./docs
+  # sed -i "s#baseURL =.*#baseURL = \"${HUGO_BASE_URL}\"#g" ./docs/config.toml
+  # sed -i "s#baseurl =.*#baseURL = \"${HUGO_BASE_URL}\"#g" ./docs/config.toml
+}
 checkFeatureBranch () {
   export CURRENT_BRANCH=$(git branch -a|grep '*'|awk '{print $2}') && echo "CURRENT_BRANCH=[${CURRENT_BRANCH}]"
   export EXPECTED_FEATURE_BRANCH="feature/${FEATURE_ALIAS}"
@@ -83,7 +91,7 @@ else
     exit 9
   else
     # read -p  "DEBUGPOINT JBL ok" DEBUGPOINT
-    checkFeatureBranch
+    checkFeatureBranch && hugoPackage
     commitAndPush
   fi;
 fi;
