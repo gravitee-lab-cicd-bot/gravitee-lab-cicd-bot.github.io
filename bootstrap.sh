@@ -61,9 +61,15 @@ echo "So now, all you have to do is to commit and push, to initialiaze your git 
 # git flow with 'git flow init --defaults' full default configuration
 # Should be used only
 commitAndPush () {
+  # First, we need to reset permissions
+  export THATSME=$(whoami)
+  sudo chown -R ${THATSME}:${THATSME} ./hugo
+  sudo chmod -R a+rw ./hugo
+
   if [ "x${COMMIT_MESSAGE}" == "x" ]; then
     echo "Your commit message is empty or not set"
     echo "set the COMMIT_MESSAGE env. var. to finish your git flow feature"
+    Usage
     exit 7
   fi;
 
@@ -73,6 +79,7 @@ commitAndPush () {
     echo "Your FEATURE_ALIAS is empty or not set"
     echo "set the FEATURE_ALIAS env. var. to finish your git flow feature"
     echo ""
+    Usage
     exit 8
   fi;
 
