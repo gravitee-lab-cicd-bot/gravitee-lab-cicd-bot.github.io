@@ -1,6 +1,31 @@
 #!/bin/bash
 
 source .env
+Usage () {
+  echo "---"
+  echo "- [$0] launches a container that bootstrap a hugo project, based on the hugo theme specified with the ${HUGO_THEME_GIT_URI} env. var."
+  echo "- [$0] will then : "
+  echo "       place the generated source code of the hugo project in the [$(pwd)/hugo] folder."
+  echo "       hugo build the hugo project, and the hugo generated static assets are placed into the [$(pwd)/docs] folder, with baseURL cofigured in [config.toml]"
+
+  echo "       Hit [Ctrl + C] to exit [docker-compose logs -f], and the hugo source code will optionnally be "
+  echo "       pushed to your feature branch using the git flow, see [--git-flow] option. "
+  echo "---"
+  echo "- Usage :"
+  echo "---"
+  echo "  $0 [options]"
+  echo "---"
+  echo "- Options :"
+  echo "    --git-flow    if you provide this options invoking [$0] , then When you Ctrl + C to exit [docker-compose logs -f] "
+  echo "                  then a git flow release is automatically executed, based on the [NEXT_RELEASE] env. var. in the [.env] file"
+  echo "                  when using this option, the following env var. are mandatory :"
+  echo ""
+  echo "                  COMMIT_MESSAGE :  will define the commit message to git flow feature finish the current feature"
+  # echo "                  FEATURE_ALIAS :  will execute the [git flow feature finish ${FEATURE_ALIAS}] command, so must match current branch name, or throws an Error code 17"
+}
+echo "Implementation not finished"
+Usage
+exit 0
 
 hugoPackage () {
   if [ -d ./docs ]; then

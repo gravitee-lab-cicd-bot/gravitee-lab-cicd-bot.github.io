@@ -16,7 +16,7 @@ Usage () {
   echo "---"
   echo "- Options :"
   echo "    --git-flow    if you provide this options invoking [$0] , then When you Ctrl + C to exit [docker-compose logs -f] "
-  echo "                  then a git flow release is automatically executed, based on the [NEXT_RELEASE] env. var. in the [.env] file"
+  echo "                  then a commit and push to your git flow feature branch is automatically executed, based on the [COMMIT_MESSAGE] env. var."
   echo "                  when using this option, the following env var. are mandatory :"
   echo ""
   echo "                  COMMIT_MESSAGE :  will define the commit message to git flow feature finish the current feature"
