@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>yii.im</title>
+    <title>/~/GraviteeLab-CICD-Bot</title>
     <link>https://gravitee-lab-cicd-bot.github.io/</link>
-    <description>Recent content on yii.im</description>
+    <description>Recent content on /~/GraviteeLab-CICD-Bot</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2015 13:07:31 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2020 13:07:31 +0200</lastBuildDate>
     
 	<atom:link href="https://gravitee-lab-cicd-bot.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Migrate from Jekyll</title>
-      <link>https://gravitee-lab-cicd-bot.github.io/post/migrate-from-jekyll/</link>
-      <pubDate>Sat, 10 Oct 2015 13:07:31 +0200</pubDate>
+      <title>The Bourne identities of the Gravitee Bot</title>
+      <link>https://gravitee-lab-cicd-bot.github.io/post/the-gravitee-lab-ci-cd-bot/</link>
+      <pubDate>Thu, 06 Aug 2020 13:07:31 +0200</pubDate>
       
-      <guid>https://gravitee-lab-cicd-bot.github.io/post/migrate-from-jekyll/</guid>
-      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <guid>https://gravitee-lab-cicd-bot.github.io/post/the-gravitee-lab-ci-cd-bot/</guid>
+      <description>What is the Gravitee Lab CI CD Bot ? The Gravitee Lab CI CD Bot :
+ executes SecretHub operations like Setup, User / Permissions management, Secrets management Pipeline steps Docker image management operations. manage some labels on issues, like stale, or waiting_since_more_than_30_days talks to people on issues comments, merge/pull requests discussions, notify Gravitee lab Team members about piepline events (e.g test results report available at https://allure.gravitee-lab.io/pipelines/154778547 ) to multi channel : chatops , github pull requests discussions, email, etc&amp;hellip;  In other words, as a Robot, I use many identities, to operate in the many countries of your Software factory partners :</description>
     </item>
     
     <item>
