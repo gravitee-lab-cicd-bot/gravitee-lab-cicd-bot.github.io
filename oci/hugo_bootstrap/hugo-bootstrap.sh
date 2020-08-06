@@ -34,4 +34,9 @@ sed -i "s#baseurl =.*#baseURL = \"${HUGO_BASE_URL}\"#g" /gravitee-bot/src/config
 
 
 # Now building
+cd /gravitee-bot/src && rm -fr public
 cd /gravitee-bot/src && hugo
+echo "[- ./hugo/:/gravitee-bot/src/] volume folder content after hugo build : "
+ls -allh /gravitee-bot/src
+echo "Gravitee Bot Doc HUGO SERVER boot"
+cd /gravitee-bot/src && hugo server
