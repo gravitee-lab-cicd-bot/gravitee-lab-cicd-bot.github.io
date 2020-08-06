@@ -76,7 +76,7 @@ commitAndPush () {
     exit 8
   fi;
 
-  git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all && git push -u origin --tags
+  git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all
 }
 
 # And now you could do a release
