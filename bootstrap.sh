@@ -93,12 +93,12 @@ if [ "x$1" == "x" ]; then
   echo "set the COMMIT_MESSAGE env. var. to commit and push to your branch and finish your git flow feature"
 else
   if ! [ "x$1" == "x--git-flow" ]; then
-    read -p  "DEBUGPOINT JBL ko" DEBUGPOINT
+    # read -p  "DEBUGPOINT JBL ko" DEBUGPOINT
     echo "You provided a first argument an unknown option : the [--git-flow] option is the only allowed value as first argument of [$0]"
     Usage
     exit 9
   else
-    read -p  "DEBUGPOINT JBL ok" DEBUGPOINT
+    # read -p  "DEBUGPOINT JBL ok" DEBUGPOINT
     checkFeatureBranch
     commitAndPush
   fi;
