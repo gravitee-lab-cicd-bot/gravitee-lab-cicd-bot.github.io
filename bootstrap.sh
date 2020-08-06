@@ -83,7 +83,8 @@ commitAndPush () {
     exit 8
   fi;
 
-  git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all
+  echo "Now to finish your git flow feature you can run : "
+  echo "  git flow feature finish ${FEATURE_ALIAS} && git push -u origin --all "
 }
 
 # And now you could do a release
