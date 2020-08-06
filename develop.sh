@@ -91,7 +91,9 @@ else
     exit 9
   else
     # read -p  "DEBUGPOINT JBL ok" DEBUGPOINT
-    checkFeatureBranch && hugoPackage
+    checkFeatureBranch
+    echo "executing hugoPackage"
+    hugoPackage
     commitAndPush
   fi;
 fi;
